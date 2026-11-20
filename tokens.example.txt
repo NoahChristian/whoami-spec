@@ -1,0 +1,34 @@
+# appid token registry — EXAMPLE. Placeholders only.
+#
+# THE REAL REGISTRY DOES NOT LIVE IN THIS REPOSITORY, and that is deliberate.
+# The spec and the checker are general and meant to be read by anyone. A
+# registry is a list of what one organization actually runs, and publishing
+# the format should not publish an index of somebody's projects.
+#
+# Keep yours wherever your private work lives, and point the checker at it:
+#
+#     whoami_check.py tokens --tokens path/to/tokens.txt
+#     WHOAMI_TOKENS=path/to/tokens.txt whoami_check.py report capture.txt
+#
+# One line per application that emits a whoami report:
+#
+#     <token>  <units>  <where it runs>
+#
+# WHY A REGISTRY AT ALL. The token is how a host decides which device it is
+# holding. Two applications claiming one token is the failure this file
+# exists to prevent, and it is a quiet failure: detection picks whichever
+# answered first and everything downstream is confidently wrong.
+#
+# A RENAME IS A BREAKING CHANGE and must appear as a diff. Anything matching
+# on the old token stops matching, silently, which is the worst way for a
+# contract to break. If a token must change, keep the old line with a
+# `retired` note rather than deleting it — a reader of old captures still
+# needs to know what it meant.
+#
+# `units` is the count of physical boards, and it decides whether the
+# `unit <n>` field appears in that application's appid line. A project with
+# one board omits the field entirely; see SPEC.md.
+#
+# token                      units  where
+example-sensor               1      an example board, one of them
+example-display              3      an example board, three of them
