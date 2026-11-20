@@ -1,0 +1,4 @@
+# THE CASE THAT CATCHES A PARSER SPLITTING ON WHITESPACE. The grid is fixed-width precisely so a label may contain a space. A reader that searches for the first space reports the label as `front` and moves `end` into the value -- a corrupted read that looks successful.
+field.front end=some-frontend
+refusal=false
+status=ok

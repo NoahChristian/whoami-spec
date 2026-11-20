@@ -1,0 +1,6 @@
+# A REFUSAL IS A SUCCESSFUL READ. The device cannot speak the requested major, so it answers with the frozen preamble alone -- the one answer a reader of any major is guaranteed to understand. Treating this as a parse failure throws away the only diagnosable thing about it.
+major=4
+refusal=true
+revision=1
+speaks=3 4
+status=ok

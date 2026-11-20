@@ -1,0 +1,3 @@
+# A device that never sends a newline must not be able to hang a reader. The preamble's whole value is that the decision is cheap.
+error=bounds
+status=error

@@ -1,0 +1,3 @@
+# Mis-padding is NOT tolerated, deliberately. The fixed width is what lets a label hold a space, so a reader that falls back to splitting on whitespace to be helpful reinstates the two-word-label bug.
+error=preamble
+status=error

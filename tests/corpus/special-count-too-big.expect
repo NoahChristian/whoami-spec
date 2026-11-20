@@ -1,0 +1,3 @@
+# BOUND THE COUNT. An unbounded count supplied by the far end is a request to read forever. Past the cap it is a malformed report, not an instruction to obey.
+error=special
+status=error

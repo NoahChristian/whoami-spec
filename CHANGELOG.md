@@ -14,6 +14,56 @@ revision changes no parsing and costs no reflash.
 
 ---
 
+## Reference implementations — 2026-11-19 (schema unchanged, still 1.0005)
+
+**NOT A SCHEMA CHANGE, and deliberately not given a revision number.** No
+grammar changed, no field was added or removed, nothing parses differently, and
+no device needs a reflash.
+
+It was drafted as `1.0006` and that was wrong. A revision number is a statement
+about the wire format, and the wire format did not move — the repository gained
+code. Numbering it would have obliged every board to be reflashed to emit a new
+number for no behavioral reason, which is precisely the cost the second column
+of this file exists to discourage. The version a device reports should change
+when what it emits changes, and not when its author has been busy.
+
+Recorded here anyway, because "what shipped and when" is the other question
+this file answers.
+
+**What prompted it.** The format had been implemented three times by hand. All
+three were tested, all three passed, and all three shared a defect: each did
+I/O on the request path, one of them a 31 KB flash CRC on every call to an
+ungated HTTP endpoint. The bug was in none of the three implementations; it was
+in there being three. A spec that describes only output leaves the structure to
+be rebuilt per board, and a rebuilt structure is a re-derived set of bugs.
+
+Added:
+
+- **`ref/`** — one emitter and ten readers: C/C++, Python (MicroPython subset),
+  JavaScript, TypeScript, Ruby, Rust (`core` only), Java, R, Julia, MATLAB and
+  PowerShell.
+- **`tests/corpus/`** — 18 cases, hand-written from this document rather than
+  captured from any parser. Capturing would have made the corpus agree with the
+  bug.
+- **`tests/run_all.ps1`** — runs every implementation against those bytes and
+  reports a missing toolchain as `skipped`, never as a pass.
+
+**The corpus paid for itself before it was committed.** It found that two
+implementations — the two written first and reviewed most — split a line on the
+first whitespace instead of slicing at column 12, so the label `front end` was
+read as `front` with `end` silently moved into the value. A corrupted read that
+looks like a successful one, which is the failure this format's fixed-width
+grid exists to make impossible. It also caught a PowerShell bound that threw a
+language error instead of refusing, on precisely the input it was written to
+stop: a guard that did not guard.
+
+**What this does not change.** Conformance is still decided by
+`tools/whoami_check.py`, which is stricter than any reader here. A reader in
+the field must cope with reports it would also have called non-conformant, so
+reading and validating stay separate on purpose.
+
+---
+
 ## 1.0005 — 2026-11-19
 
 The name is settled. **Cost to adopt:** none; nothing renamed.

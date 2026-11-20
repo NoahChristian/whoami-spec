@@ -1,0 +1,3 @@
+# BOUND THE REPORT. A device stuck in a loop must be a failed read rather than a growing buffer.
+error=bounds
+status=error

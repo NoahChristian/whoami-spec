@@ -1,0 +1,3 @@
+# The preamble is the contract. Without it a reader cannot know what major the rest is in, so there is nothing safe to do with the body.
+error=preamble
+status=error

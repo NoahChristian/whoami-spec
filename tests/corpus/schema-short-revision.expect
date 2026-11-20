@@ -1,0 +1,3 @@
+# The revision is FOUR digits, zero-padded, always. Fixed width is what makes 1.0012 and 1.0002 compare correctly as text; accepting 1.12 accepts a report no conformant emitter produces.
+error=schema
+status=error

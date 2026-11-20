@@ -1,0 +1,3 @@
+# A field with an empty value is readable, not malformed. Refusing it would make a board delete a field rather than report nothing.
+field.fault=
+status=ok

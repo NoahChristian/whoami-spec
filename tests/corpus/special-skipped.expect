@@ -1,0 +1,5 @@
+# SECURITY-RELEVANT. Block content is opaque and must be SKIPPED by count, never parsed. A reader that parses inside a block lets the far end forge any field it likes -- here, `attest`. The field after the block must still be read, proving the reader resynchronized exactly.
+blocks=1
+field.attest=none
+field.hostname=real-value
+status=ok

@@ -1,0 +1,4 @@
+# Not knowing a tag is the EXPECTED case, not an error. The count is all a reader needs; it skips and continues without warning.
+blocks=1
+refusal=false
+status=ok

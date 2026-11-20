@@ -1,0 +1,10 @@
+# The baseline. Every required field, one major, nothing unusual.
+blocks=0
+field.appid=example-sensor fw 0.23.0
+field.attest=none
+field.project=Example Sensor
+major=1
+refusal=false
+revision=5
+speaks=1
+status=ok

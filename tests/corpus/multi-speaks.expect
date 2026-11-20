@@ -1,0 +1,4 @@
+# A device that can emit several majors declares all of them, so a reader that has fallen behind discovers it rather than never learning.
+refusal=false
+speaks=1 2 3
+status=ok

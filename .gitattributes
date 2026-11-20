@@ -1,0 +1,29 @@
+# The conformance corpus is BYTES, not text, and git must not touch it.
+#
+# These files are the exact input a reader is handed. One case carries CRLF on
+# purpose, because serial consoles emit CRLF and a reader that only accepts LF
+# fails on real hardware while passing every test written on a workstation.
+#
+# WHY THIS IS NEEDED. A line-ending normalizer that rewrites tracked text files
+# to LF would silently empty that case: the file would still be there, the test
+# would still run, and it would still pass -- while testing nothing it was
+# written to test. A fixture a tool is allowed to "fix" stops being a fixture.
+#
+# `-text` means no end-of-line conversion in either direction, on any platform,
+# for any checkout.
+#
+# VERIFY IT RATHER THAN TRUSTING IT, and not with grep: `grep $'\r'` reported
+# no carriage returns in a file that holds eight of them, which nearly got this
+# case declared dead while it was working correctly. Count the bytes:
+#
+#   python -c "print(open('tests/corpus/crlf.report','rb').read().count(b'\r'))"
+#
+# Eight is correct. Zero means the protection below stopped working, and the
+# `crlf` case is now green for the wrong reason.
+tests/corpus/** -text
+
+# The expectations are read line-by-line by eleven runners in eleven languages.
+# Pinning them to LF keeps every runner seeing the same bytes rather than
+# whatever the checkout decided.
+tests/corpus/*.expect -text eol=lf
+tests/corpus/INDEX    -text eol=lf

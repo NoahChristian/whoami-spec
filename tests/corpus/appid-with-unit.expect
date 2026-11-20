@@ -1,0 +1,3 @@
+# `fw` is last so a reader can take the final field without knowing whether `unit` was present.
+field.appid=example-display unit 2 fw 3.3.0
+status=ok

@@ -1,0 +1,5 @@
+# Serial consoles emit CRLF. A reader that only accepts LF fails on real hardware while passing every test written on a workstation.
+field.attest=none
+major=1
+refusal=false
+status=ok

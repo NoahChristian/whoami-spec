@@ -1,0 +1,8 @@
+schema     1.0005
+speaks     1 2 3
+appid      example-sensor fw 0.23.0
+project    Example Sensor
+board      some-board
+built      Nov 19 2026 17:02:11
+uptime     0d 02:50:17
+attest     none
