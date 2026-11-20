@@ -14,7 +14,22 @@ revision changes no parsing and costs no reflash.
 
 ---
 
-## Reference implementations — 2026-11-19 (schema unchanged, still 1.0005)
+## Release 0.8.0 — 2026-11-19 (schema unchanged, still 1.0005)
+
+**TWO VERSIONS, AND THEY ARE NOT THE SAME NUMBER.**
+
+- **The schema** is what a device emits and a reader parses: `1.0005`. It
+  changes only when the wire format changes, and every such change costs a
+  reflash of every emitter.
+- **The repository** is this document plus its tooling: `0.8.0`. It changes
+  whenever the code or the prose ships something new.
+
+The first release was tagged `v1.0005`, which conflated them. That is wrong in
+a way worth naming: it implies the schema moves whenever the repository does,
+which would make every added test a reason to reflash three boards. Tagged
+`v0.8.0` instead, and left below 1.0 deliberately — the format is settled, the
+tooling around it is not, and claiming otherwise in a version number is a
+promise this repository is not yet in a position to keep.
 
 **NOT A SCHEMA CHANGE, and deliberately not given a revision number.** No
 grammar changed, no field was added or removed, nothing parses differently, and
